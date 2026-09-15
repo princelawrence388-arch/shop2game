@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop2Game</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#08090d;
+  color:white;
+}
+header{
+  padding:20px;
+  text-align:center;
+  background:linear-gradient(135deg,#151515,#b00020);
+}
+.logo{font-size:28px;font-weight:900}
+.hero{text-align:center;padding:45px 20px}
+.hero h1{font-size:38px;margin:10px 0}
+.hero p{color:#bbb}
+.btn{
+  display:inline-block;
+  padding:14px 24px;
+  margin:10px 5px;
+  border:0;
+  border-radius:10px;
+  background:#e5092f;
+  color:white;
+  font-weight:bold;
+  text-decoration:none;
+}
+.container{padding:20px;max-width:900px;margin:auto}
+.card{
+  background:#15171e;
+  border:1px solid #292c35;
+  border-radius:15px;
+  padding:22px;
+  margin:15px 0;
+}
+.price{font-size:26px;font-weight:bold}
+.small{color:#999;font-size:14px}
+footer{text-align:center;padding:30px;color:#777}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🎮 SHOP2GAME</div>
+  <div class="small">Gaming Rewards & Digital Codes</div>
+</header>
+
+<section class="hero">
+  <h1>Welcome to Shop2Game</h1>
+  <p>Gaming rewards, redeem codes and digital products.</p>
+
+  <a class="btn" href="#codes">🎁 View Codes</a>
+  <a class="btn" href="#login">🔐 Sign In</a>
+</section>
+
+<div class="container">
+
+<section id="codes">
+  <div class="card">
+    <h2>🎁 Redeem Code</h2>
+    <p>Free Fire redeem code</p>
+    <div class="price">₦1,500</div>
+    <p class="small">Payment is required before a paid code is delivered.</p>
+    <a class="btn" href="#payment">Buy Code</a>
+  </div>
+</section>
+
+<section id="login">
+  <div class="card">
+    <h2>🔐 Sign in</h2>
+    <p>Sign in securely with your Google account.</p>
+    <button class="btn" onclick="googleLogin()">Continue with Google</button>
+    <p class="small">Google authentication will be connected securely later.</p>
+  </div>
+</section>
+
+<section id="payment">
+  <div class="card">
+    <h2>💳 Payment</h2>
+    <p>Choose your preferred payment method.</p>
+    <button class="btn" onclick="alert('Secure card checkout will be connected here.')">
+      💳 Card Payment
+    </button>
+    <hr>
+    <h3>🏦 Direct Transfer</h3>
+    <p><b>Opay</b></p>
+    <p>Account: <b>9150401551</b></p>
+    <p>Name: <b>Prince Chinedu Ifeanyi</b></p>
+    <p class="small">Your order will be released after payment is verified.</p>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  © 2026 Shop2Game.com
+</footer>
+
+<script>
+function googleLogin(){
+  alert("Secure Google Sign-In will be connected in the next step.");
+}
+</script>
+
+</body>
+  </html>
