@@ -1,113 +1,879 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop2Game</title>
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#08090d;
-  color:white;
-}
-header{
-  padding:20px;
-  text-align:center;
-  background:linear-gradient(135deg,#151515,#b00020);
-}
-.logo{font-size:28px;font-weight:900}
-.hero{text-align:center;padding:45px 20px}
-.hero h1{font-size:38px;margin:10px 0}
-.hero p{color:#bbb}
-.btn{
-  display:inline-block;
-  padding:14px 24px;
-  margin:10px 5px;
-  border:0;
-  border-radius:10px;
-  background:#e5092f;
-  color:white;
-  font-weight:bold;
-  text-decoration:none;
-}
-.container{padding:20px;max-width:900px;margin:auto}
-.card{
-  background:#15171e;
-  border:1px solid #292c35;
-  border-radius:15px;
-  padding:22px;
-  margin:15px 0;
-}
-.price{font-size:26px;font-weight:bold}
-.small{color:#999;font-size:14px}
-footer{text-align:center;padding:30px;color:#777}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09090b">
+
+  <title>Shop2Game | Gaming Store</title>
+
+  <meta
+    name="description"
+    content="Shop2Game — digital gaming top-ups, passes, subscriptions and redeem codes."
+  >
+
+  <style>
+    :root {
+      --bg: #070709;
+      --panel: #101014;
+      --panel2: #15151b;
+      --border: #27272f;
+      --text: #ffffff;
+      --muted: #92929d;
+      --red: #ff3030;
+      --red2: #ff5757;
+      --green: #24d17e;
+      --gold: #ffc83d;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(255, 48, 48, .18), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
+      background: rgba(7, 7, 9, .92);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 950;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--red);
+    }
+
+    .login-btn {
+      border: 1px solid #33333b;
+      background: #fff;
+      color: #111;
+      padding: 9px 13px;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* HERO */
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px 45px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 13px;
+      border-radius: 30px;
+      background: rgba(255, 48, 48, .1);
+      border: 1px solid rgba(255, 48, 48, .3);
+      color: #ff7777;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .8px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 10vw, 65px);
+      line-height: .98;
+      margin-bottom: 17px;
+    }
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: auto;
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      border-radius: 10px;
+      padding: 13px 18px;
+      font-weight: 900;
+      border: 0;
+    }
+
+    .primary-btn {
+      background: var(--red);
+      color: white;
+    }
+
+    .secondary-btn {
+      background: #17171c;
+      color: white;
+      border: 1px solid var(--border);
+    }
+
+    /* CONTAINER */
+
+    .container {
+      width: min(1050px, 92%);
+      margin: auto;
+      padding-bottom: 60px;
+    }
+
+    .section {
+      margin-top: 25px;
+    }
+
+    .section-title {
+      margin-bottom: 14px;
+    }
+
+    .section-title h2 {
+      font-size: 23px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    /* OFFER */
+
+    .offer {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(120deg, rgba(255, 48, 48, .2), transparent),
+        var(--panel);
+      border: 1px solid rgba(255, 48, 48, .35);
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .offer-label {
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .offer h2 {
+      margin: 8px 0;
+      font-size: 25px;
+    }
+
+    .offer p {
+      color: #aaa;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .discount {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 8px 11px;
+      border-radius: 8px;
+      background: var(--red);
+      font-weight: 900;
+    }
+
+    /* CARDS */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 13px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 19px;
+      transition: .2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: #44444e;
+    }
+
+    .icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      font-size: 17px;
+      margin-bottom: 7px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .price {
+      font-size: 21px;
+      font-weight: 950;
+      margin: 13px 0;
+    }
+
+    .old-price {
+      color: #777;
+      text-decoration: line-through;
+      font-size: 12px;
+      margin-left: 5px;
+      font-weight: normal;
+    }
+
+    .green {
+      color: var(--green);
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .card-btn {
+      width: 100%;
+      padding: 11px;
+      border-radius: 9px;
+      border: 0;
+      background: var(--red);
+      color: white;
+      font-weight: 900;
+    }
+
+    /* UID ORDER */
+
+    .order-box {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .input-group {
+      margin-top: 15px;
+    }
+
+    label {
+      display: block;
+      color: #bbb;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      background: #09090c;
+      color: white;
+      border: 1px solid #303039;
+      padding: 13px;
+      border-radius: 9px;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--red);
+    }
+
+    .verify-btn {
+      width: 100%;
+      margin-top: 15px;
+      padding: 13px;
+      background: #fff;
+      color: #111;
+      border: 0;
+      border-radius: 9px;
+      font-weight: 900;
+    }
+
+    #playerResult {
+      display: none;
+      margin-top: 15px;
+      background: #101b16;
+      border: 1px solid #245a40;
+      border-radius: 11px;
+      padding: 15px;
+    }
+
+    #playerResult strong {
+      color: var(--green);
+    }
+
+    /* PAYMENT */
+
+    .payment {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .payment-method {
+      margin-top: 13px;
+      padding: 15px;
+      border-radius: 11px;
+      background: var(--panel2);
+      border: 1px solid var(--border);
+    }
+
+    .payment-method strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .payment-method span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .security-note {
+      margin-top: 15px;
+      padding: 14px;
+      border-left: 3px solid var(--red);
+      background: #171012;
+      color: #aaa;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* STEPS */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .step {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 16px;
+    }
+
+    .step-number {
+      width: 29px;
+      height: 29px;
+      display: grid;
+      place-items: center;
+      background: var(--red);
+      border-radius: 50%;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .step h3 {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: #666;
+      padding: 28px 15px;
+      font-size: 12px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      header {
+        padding: 13px 4%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding-top: 45px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">🎮 SHOP2GAME</div>
-  <div class="small">Gaming Rewards & Digital Codes</div>
+  <div class="logo">🎮 SHOP<span>2</span>GAME</div>
+  <button class="login-btn" onclick="googleLogin()">
+    Sign in with Google
+  </button>
 </header>
 
 <section class="hero">
-  <h1>Welcome to Shop2Game</h1>
-  <p>Gaming rewards, redeem codes and digital products.</p>
 
-  <a class="btn" href="#codes">🎁 View Codes</a>
-  <a class="btn" href="#login">🔐 Sign In</a>
-</section>
+  <div class="badge">⚡ DIGITAL GAMING STORE</div>
 
-<div class="container">
+  <h1>
+    Your Game.<br>
+    <span>Your Rewards.</span>
+  </h1>
 
-<section id="codes">
-  <div class="card">
-    <h2>🎁 Redeem Code</h2>
-    <p>Free Fire redeem code</p>
-    <div class="price">₦1,500</div>
-    <p class="small">Payment is required before a paid code is delivered.</p>
-    <a class="btn" href="#payment">Buy Code</a>
-  </div>
-</section>
+  <p>
+    Top up, get your Booyah Pass, subscribe to gaming plans
+    and purchase redeem codes through one simple store.
+  </p>
 
-<section id="login">
-  <div class="card">
-    <h2>🔐 Sign in</h2>
-    <p>Sign in securely with your Google account.</p>
-    <button class="btn" onclick="googleLogin()">Continue with Google</button>
-    <p class="small">Google authentication will be connected securely later.</p>
-  </div>
-</section>
-
-<section id="payment">
-  <div class="card">
-    <h2>💳 Payment</h2>
-    <p>Choose your preferred payment method.</p>
-    <button class="btn" onclick="alert('Secure card checkout will be connected here.')">
-      💳 Card Payment
+  <div class="hero-buttons">
+    <button class="primary-btn" onclick="scrollToId('topup')">
+      🛒 Shop Now
     </button>
-    <hr>
-    <h3>🏦 Direct Transfer</h3>
-    <p><b>Opay</b></p>
-    <p>Account: <b>9150401551</b></p>
-    <p>Name: <b>Prince Chinedu Ifeanyi</b></p>
-    <p class="small">Your order will be released after payment is verified.</p>
+
+    <button class="secondary-btn" onclick="scrollToId('order')">
+      🔎 Check UID
+    </button>
   </div>
+
 </section>
 
-</div>
+<main class="container">
+
+  <!-- FIRST PURCHASE OFFER -->
+
+  <section class="section">
+    <div class="offer">
+
+      <div class="offer-label">🔥 NEW CUSTOMER OFFER</div>
+
+      <h2>35% OFF YOUR FIRST PURCHASE</h2>
+
+      <p>
+        New customers can receive a 35% discount on their
+        first qualifying purchase. Offer eligibility is
+        checked by the Shop2Game server.
+      </p>
+
+      <span class="discount">35% OFF</span>
+
+    </div>
+  </section>
+
+  <!-- TOP UP -->
+
+  <section class="section" id="topup">
+
+    <div class="section-title">
+      <h2>💎 Top Up Center</h2>
+      <p>Choose your preferred gaming top-up package.</p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="icon">💎</div>
+        <h3>Small Pack</h3>
+        <p>Digital game top-up.</p>
+        <div class="price">₦500</div>
+        <button class="card-btn" onclick="selectProduct('Small Top Up')">
+          Buy Now
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="icon">💎💎</div>
+        <h3>Medium Pack</h3>
+        <p>Digital game top-up.</p>
+        <div class="price">₦1,000</div>
+        <button class="card-btn" onclick="selectProduct('Medium Top Up')">
+          Buy Now
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="icon">💎💎💎</div>
+        <h3>Large Pack</h3>
+        <p>Digital game top-up.</p>
+        <div class="price">₦2,000</div>
+        <button class="card-btn" onclick="selectProduct('Large Top Up')">
+          Buy Now
+        </button>
+      </div>
+
+    </div>
+
+    <div class="security-note">
+      💡 Top-up prices will be connected to verified pricing before
+      the store goes live. We will not claim a 20% saving unless the
+      actual reference price supports it.
+    </div>
+
+  </section>
+
+  <!-- BOOYAH PASS -->
+
+  <section class="section">
+
+    <div class="section-title">
+      <h2>🏆 Booyah Pass</h2>
+      <p>Purchase your pass through Shop2Game.</p>
+    </div>
+
+    <div class="card">
+
+      <div class="icon">🏆</div>
+
+      <h3>Booyah Pass</h3>
+
+      <p>
+        Booyah Pass purchase service.
+        Payment verification is required before delivery.
+      </p>
+
+      <div class="price">₦1,500</div>
+
+      <button
+        class="card-btn"
+        onclick="selectProduct('Booyah Pass')">
+        Get Booyah Pass
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- SUBSCRIPTIONS -->
+
+  <section class="section">
+
+    <div class="section-title">
+      <h2>⭐ Subscriptions</h2>
+      <p>Save 25% on qualifying subscription purchases.</p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="icon">⚡</div>
+        <h3>Weekly Elite</h3>
+        <p>Premium weekly subscription.</p>
+        <div class="price">
+          ₦1,000
+          <span class="old-price">₦1,333</span>
+        </div>
+        <div class="green">25% DISCOUNT</div>
+        <br><br>
+        <button
+          class="card-btn"
+          onclick="selectProduct('Weekly Elite')">
+          Subscribe
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔥</div>
+        <h3>Weekly</h3>
+        <p>Standard weekly subscription.</p>
+        <div class="price">
+          ₦750
+          <span class="old-price">₦1,000</span>
+        </div>
+        <div class="green">25% DISCOUNT</div>
+        <br><br>
+        <button
+          class="card-btn"
+          onclick="selectProduct('Weekly Subscription')">
+          Subscribe
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="icon">👑</div>
+        <h3>Monthly</h3>
+        <p>Monthly subscription package.</p>
+        <div class="price">
+          ₦1,500
+          <span class="old-price">₦2,000</span>
+        </div>
+        <div class="green">25% DISCOUNT</div>
+        <br><br>
+        <button
+          class="card-btn"
+          onclick="selectProduct('Monthly Subscription')">
+          Subscribe
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- REDEEM CODE -->
+
+  <section class="section">
+
+    <div class="section-title">
+      <h2>🎁 Redeem Codes</h2>
+      <p>Purchase a digital redeem code.</p>
+    </div>
+
+    <div class="card">
+
+      <div class="icon">🎟️</div>
+
+      <h3>Gaming Redeem Code</h3>
+
+      <p>
+        One digital redeem code. Payment must be manually
+        verified before the code is released.
+      </p>
+
+      <div class="price">₦1,500</div>
+
+      <button
+        class="card-btn"
+        onclick="selectProduct('Redeem Code')">
+        Buy Redeem Code
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- UID -->
+
+  <section class="section" id="order">
+
+    <div class="section-title">
+      <h2>🔎 Verify Player</h2>
+      <p>Enter the UID connected to your order.</p>
+    </div>
+
+    <div class="order-box">
+
+      <div class="input-group">
+        <label for="uid">PLAYER UID</label>
+
+        <input
+          id="uid"
+          type="text"
+          inputmode="numeric"
+          placeholder="Enter your UID"
+          maxlength="20"
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="region">REGION</label>
+
+        <select id="region">
+          <option value="">Select region</option>
+          <option value="NG">Nigeria</option>
+          <option value="GH">Ghana</option>
+          <option value="OTHER">Other</option>
+        </select>
+      </div>
+
+      <button class="verify-btn" onclick="verifyPlayer()">
+        🔎 Verify UID
+      </button>
+
+      <div id="playerResult">
+        <strong>Player lookup ready</strong>
+        <br><br>
+        UID: <span id="resultUid"></span>
+        <br>
+        Player name and level will appear here once
+        a legitimate player-data API is connected.
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PAYMENT -->
+
+  <section class="section">
+
+    <div class="section-title">
+      <h2>💳 Payment & Verification</h2>
+      <p>Your payment is reviewed before any digital item is released.</p>
+    </div>
+
+    <div class="payment">
+
+      <div class="payment-method">
+        <strong>🏦 Opay Transfer</strong>
+        <span>
+          Account: 9150401551<br>
+          Account name: Prince Chinedu Ifeanyi
+        </span>
+      </div>
+
+      <div class="security-note">
+        🔐 <strong>Manual approval system:</strong>
+        submitting a receipt does not automatically release
+        your code or item. Shop2Game administration must verify
+        the payment first.
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- HOW IT WORKS -->
+
+  <section class="section">
+
+    <div class="section-title">
+      <h2>⚙️ How Shop2Game Works</h2>
+      <p>Simple, transparent and secure.</p>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Choose Product</h3>
+        <p>Select a top-up, pass, subscription or redeem code.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Enter UID</h3>
+        <p>Provide the correct player UID for your order.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Make Payment</h3>
+        <p>Complete payment and submit your payment reference.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Admin Approval</h3>
+        <p>After verification, your purchased item is released.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
 
 <footer>
-  © 2026 Shop2Game.com
+  © 2026 Shop2Game · Independent digital gaming store
+  <br><br>
+  Never share your password, PIN or OTP with anyone.
 </footer>
 
 <script>
-function googleLogin(){
-  alert("Secure Google Sign-In will be connected in the next step.");
-}
+
+  function scrollToId(id) {
+    document.getElementById(id).scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+
+  function googleLogin() {
+    alert(
+      "Secure Google Sign-In will be connected in the next step. " +
+      "Shop2Game will never ask for your Google password."
+    );
+  }
+
+  function selectProduct(product) {
+    alert(
+      product +
+      " selected. The order and payment system will be connected next."
+    );
+
+    scrollToId("order");
+  }
+
+  function verifyPlayer() {
+
+    const uid = document.getElementById("uid").value.trim();
+    const region = document.getElementById("region").value;
+
+    if (!uid) {
+      alert("Please enter your player UID.");
+      return;
+    }
+
+    if (!region) {
+      alert("Please select your region.");
+      return;
+    }
+
+    document.getElementById("resultUid").textContent = uid;
+    document.getElementById("playerResult").style.display = "block";
+  }
+
 </script>
 
 </body>
